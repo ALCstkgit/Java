@@ -1,0 +1,11 @@
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Data
+@ToString(onlyExplicityIncluded = true)
+@EqualsAndHashCode(onlyExplicityIncluded = true)
+
+@RestController
+@RequestMapping("/pacientes")
+@GetMapping
