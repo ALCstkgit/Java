@@ -35,6 +35,6 @@ public class FundamentosSpringApplication implements CommandLineRunner {
         System.out.println(con.conducir());
         System.out.println("---------------");
         System.out.println("Ejercicio Dao");
-        System.out.println(cd.insertar(new Cliente()));
+        System.out.println(cd.insertar(new Cliente("Antonio", "79127441Q")));
     }
 }
