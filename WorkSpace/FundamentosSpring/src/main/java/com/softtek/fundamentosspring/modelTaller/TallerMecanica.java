@@ -1,8 +1,10 @@
 package com.softtek.fundamentosspring.modelTaller;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component("tm")
+@Component
+@Qualifier("tm")
 public class TallerMecanica implements ITaller{
     @Override
     public String reparar(CocheTaller c) {
