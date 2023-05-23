@@ -1,0 +1,9 @@
+Consumer<salida> (sin entrada y puede tener cualquier salida)
+predicate<entrada> (entrada cualquiera salida boolean)
+supplier<salida> (no tiene entrada y tiene una salida)
+function<entrada,salida> (cualquier entrada y cualquier salida)
+-andThen: de izquierda a derecha
+-compose: de derecha a izquierda
+
+Ejercicio:
+-Base de datos northwind y acceder con lambdas
