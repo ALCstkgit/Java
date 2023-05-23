@@ -22,7 +22,7 @@ public class ExceptionInterceptor extends ResponseEntityExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse(LocalDateTime.now(),
                 ex.getMessage(),
                 webRequest.getDescription(false));
-        return new ResponseEntity<>(errorResponse,HttpStatus.ALREADY_REPORTED);
+        return new ResponseEntity<>(errorResponse,HttpStatus.NOT_ACCEPTABLE);
     }
 
     @ExceptionHandler(NoSuchElementFoundException.class)
