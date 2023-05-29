@@ -1,6 +1,7 @@
 package com.softtek.lambdas23052023;
 
 import com.softtek.lambdas23052023.controller.Controller;
+import com.softtek.lambdas23052023.dto.ProductDto;
 import com.softtek.lambdas23052023.model.Customer;
 import com.softtek.lambdas23052023.model.Order;
 import com.softtek.lambdas23052023.model.Product;
@@ -28,6 +29,7 @@ public class Lambdas23052023Application implements CommandLineRunner {
         List<Product> products = c.listAllProducts();
         List<Order> orders = c.listAllOrders();
         List<Customer> customers = c.listAllCustomers();
+        List<ProductDto> productDtos = c.listProductsDto();
 
 //        --Obtener todos los registros y todos los campos de la tabla de productos
         products.stream().forEach(System.out::println);
@@ -233,5 +235,29 @@ public class Lambdas23052023Application implements CommandLineRunner {
                 .stream()
                 .filter(e -> e.getValue() < 100)
                 .forEach(er-> System.out.println(er.getKey()+":"+er.getValue()));
+
+        System.out.println("Cosas con DTOs:");
+        //Ejercicios con DTOs
+        //--Obtener el precio promedio por proveedor de la tabla de productos
+        productDtos.stream()
+                .collect(Collectors.groupingBy(
+                        ProductDto::getSupplierId,
+                        Collectors.averagingDouble(ProductDto::getUnitPrice)))
+                .forEach((a,b)-> System.out.println(a+":"+b));
+        System.out.println();
+        //--Obtener la suma de inventario (UnitsInStock) por SupplierID De la tabla de productos (Products)
+        productDtos.stream()
+                .collect(Collectors.groupingBy(
+                        ProductDto::getSupplierId,
+                        Collectors.summingInt(ProductDto::getUnitsInStock)))
+                .forEach((a,b)-> System.out.println(a+":"+b));
+        System.out.println();
+        //--obtener el precio promedio de los productos por categoria sin contar con los productos descontinuados (Discontinued)
+        productDtos.stream()
+                .filter(p -> p.getDiscontinued()==1)
+                .collect(Collectors.groupingBy(
+                        ProductDto::getCategoryId,
+                        Collectors.averagingDouble(ProductDto::getUnitPrice)))
+                .forEach((a,b) -> System.out.println(a+":"+b));
     }
 }

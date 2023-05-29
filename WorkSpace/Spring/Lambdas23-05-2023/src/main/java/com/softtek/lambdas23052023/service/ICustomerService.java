@@ -1,9 +1,7 @@
 package com.softtek.lambdas23052023.service;
 
 import com.softtek.lambdas23052023.model.Customer;
+import com.softtek.lambdas23052023.repository.ICrud;
 
-import java.util.List;
-
-public interface ICustomerService {
-    List<Customer> listAll();
+public interface ICustomerService extends ICrud<Customer,String> {
 }
