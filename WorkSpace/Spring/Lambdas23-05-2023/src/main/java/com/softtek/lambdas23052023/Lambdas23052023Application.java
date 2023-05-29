@@ -28,6 +28,7 @@ public class Lambdas23052023Application implements CommandLineRunner {
         List<Product> products = c.listAllProducts();
         List<Order> orders = c.listAllOrders();
         List<Customer> customers = c.listAllCustomers();
+
 //        --Obtener todos los registros y todos los campos de la tabla de productos
         products.stream().forEach(System.out::println);
 //        -- Obtenerr una consulta con Productid, productname, supplierid, categoryId, UnistsinStock, UnitPrice
@@ -97,7 +98,8 @@ public class Lambdas23052023Application implements CommandLineRunner {
                 .forEach(System.out::println);
 //                -- Obtener la información de la tabla de Products, Ordenarlos por Categoria de forma ascendente y por precio unitario de forma descendente
         products.stream()
-                .sorted(Comparator.comparing(Product::getCategoryId).thenComparing(Product::getUnitPrice).reversed())
+                .sorted(Comparator.comparing(Product::getCategoryId).reversed().thenComparing(Product::getUnitPrice).reversed())
+                .map(p -> p.getCategoryId()+","+p.getUnitPrice())
                 .forEach(System.out::println);
 //        -- Obtener la información de la tabla de Clientes, Customerid, CompanyName, city, country ordenar por pais, ciudad de forma ascendente
         customers.stream().sorted(Comparator.comparing(Customer::getCountry).thenComparing(Customer::getCity)).forEach(c -> System.out.println(c));
