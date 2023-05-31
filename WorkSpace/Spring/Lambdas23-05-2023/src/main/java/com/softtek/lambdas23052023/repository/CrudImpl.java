@@ -7,5 +7,5 @@ public abstract class CrudImpl<T,ID>{
 
     public List<T> listAll(){
         return getRepo().findAll();
-    };
+    }
 }

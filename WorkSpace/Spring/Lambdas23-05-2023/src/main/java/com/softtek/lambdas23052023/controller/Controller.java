@@ -7,7 +7,6 @@ import com.softtek.lambdas23052023.model.Product;
 import com.softtek.lambdas23052023.service.ICustomerService;
 import com.softtek.lambdas23052023.service.IOrderService;
 import com.softtek.lambdas23052023.service.IProductService;
-import com.softtek.lambdas23052023.utils.MapperConfig;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
